@@ -88,3 +88,20 @@ def flip_freeze_edge_mutation(part):
 def remove_node_mutation(random_part):
     random_part.remove_edge(random_part.parent_direction, random_part.parent)
     return random_part
+
+
+def adjust_node_size_mutation(part):
+    part.size = random.uniform(0.1, 1.0)
+    part.pos = np.array(part.parent_direction) * (part.size + part.parent.size)
+    for direction, next_child in part.edges.items():
+        if next_child is not None:
+            next_child.pos = np.array(direction) * (next_child.size + part.size)
+    return part
+
+
+def flip_joint_type_mutation(part):
+    if part.joint_type == "hinge":
+        part.joint_type = "ball"
+    else:
+        part.joint_type = "hinge"
+    return part

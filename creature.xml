@@ -3,22 +3,37 @@
     <default class="/"/>
   </default>
   <worldbody>
-    <geom name="//unnamed_geom_0" class="/" type="plane" size="100 100 0.10000000000000001" pos="0 0 -2.0112847517584278"/>
+    <geom name="//unnamed_geom_0" class="/" type="plane" size="100 100 0.10000000000000001" pos="0 0 -1"/>
     <body name="body0" pos="0 0 0">
       <joint name="//unnamed_joint_0" class="/" type="free"/>
       <geom name="//unnamed_geom_1" class="/" type="sphere" size="0.5 0.5 0.5"/>
-      <body name="body5" pos="0 0 1.4856392766997006">
-        <geom name="//unnamed_geom_2" class="/" type="sphere" size="0.98563927669970064 0.98563927669970064 0.98563927669970064"/>
-        <joint name="//unnamed_joint_1" class="/" type="hinge" axis="0 0 1"/>
+      <body name="body3" pos="-0.9182868907844558 0 0">
+        <geom name="//unnamed_geom_2" class="/" type="sphere" size="0.4182868907844558 0.4182868907844558 0.4182868907844558"/>
+        <joint name="//unnamed_joint_1" class="/" type="hinge" axis="1 0 0"/>
+        <body name="body6" pos="0 -0.95765168367189679 0">
+          <geom name="//unnamed_geom_3" class="/" type="sphere" size="0.53936479288744099 0.53936479288744099 0.53936479288744099"/>
+          <joint name="//unnamed_joint_2" class="/" type="hinge" axis="0 -1 0"/>
+        </body>
       </body>
-      <body name="body1" pos="0 0 -1.0112847517584278">
-        <geom name="//unnamed_geom_3" class="/" type="sphere" size="0.5112847517584278 0.5112847517584278 0.5112847517584278"/>
-        <joint name="//unnamed_joint_2" class="/" type="hinge" axis="0 0 -1"/>
+      <body name="body1" pos="0 1.0903888364175569 0">
+        <geom name="//unnamed_geom_4" class="/" type="sphere" size="0.59038883641755679 0.59038883641755679 0.59038883641755679"/>
+        <joint name="//unnamed_joint_3" class="/" type="hinge" axis="0 1 0"/>
+        <body name="body5" pos="1.1358367514866274 0 0">
+          <geom name="//unnamed_geom_5" class="/" type="sphere" size="0.54544791506907075 0.54544791506907075 0.54544791506907075"/>
+          <joint name="//unnamed_joint_4" class="/" type="hinge" axis="1 0 0"/>
+        </body>
+        <body name="body4" pos="0 0 0.70188428381172363">
+          <geom name="//unnamed_geom_6" class="/" type="sphere" size="0.11149544739416689 0.11149544739416689 0.11149544739416689"/>
+          <joint name="//unnamed_joint_5" class="/" type="hinge" axis="0 0 1"/>
+        </body>
       </body>
     </body>
   </worldbody>
   <actuator>
     <motor name="//unnamed_actuator_0" class="/" ctrllimited="true" ctrlrange="-1 1" joint="//unnamed_joint_1"/>
     <motor name="//unnamed_actuator_1" class="/" ctrllimited="true" ctrlrange="-1 1" joint="//unnamed_joint_2"/>
+    <motor name="//unnamed_actuator_2" class="/" ctrllimited="true" ctrlrange="-1 1" joint="//unnamed_joint_3"/>
+    <motor name="//unnamed_actuator_3" class="/" ctrllimited="true" ctrlrange="-1 1" joint="//unnamed_joint_4"/>
+    <motor name="//unnamed_actuator_4" class="/" ctrllimited="true" ctrlrange="-1 1" joint="//unnamed_joint_5"/>
   </actuator>
 </mujoco>
