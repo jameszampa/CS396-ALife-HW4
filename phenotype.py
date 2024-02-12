@@ -41,6 +41,6 @@ def translate_genotype_to_phenotype(genotype: SpherePart):
     for body in model.find_all('body'):
         if body.pos[2] < lowest_body.pos[2]:
             lowest_body = body
-    plane.pos[2] = lowest_body.pos[2] - 1
+    plane.pos[2] = lowest_body.pos[2] - 2
 
     return model, motor_strength_dict

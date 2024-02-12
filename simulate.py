@@ -6,7 +6,7 @@ import dm_control.mujoco
 import mujoco.viewer
 
 from genotype import SpherePart, add_node_mutation, get_all_sphere_parts, remove_node_mutation
-from genotype import flip_freeze_edge_mutation, adjust_node_size_mutation, flip_joint_type_mutation
+from genotype import flip_freeze_edge_mutation, flip_joint_type_mutation
 from phenotype import translate_genotype_to_phenotype
 
 
@@ -58,21 +58,13 @@ def simulate(model, motor_strength_dict):
 
 def main():
     genotype = SpherePart("body0", 0.5, (0, 0, 0))
-    for i in range(6):
+    for i in range(5):
         all_sphere_parts = get_all_sphere_parts([genotype], genotype)
         random_part = random.choice(all_sphere_parts)
         add_node_mutation(random_part, f"body{i+1}")
 
     model, motor_strength_dict = translate_genotype_to_phenotype(copy.deepcopy(genotype))
-    fitness = simulate(model, motor_strength_dict)
-
-    # Select a random node and run the freeze edge mutation
-    all_sphere_parts = get_all_sphere_parts([genotype], genotype)
-    all_spheres_minus_root = [sphere for sphere in all_sphere_parts if sphere.name != "body0"]
-    random_part = random.choice(all_spheres_minus_root)
-    adjust_node_size_mutation(random_part)
-
-    model, motor_strength_dict = translate_genotype_to_phenotype(copy.deepcopy(genotype))
+    print("Original Fitness")
     fitness = simulate(model, motor_strength_dict)
 
     # Select a random node and run the freeze edge mutation
@@ -82,6 +74,7 @@ def main():
     flip_joint_type_mutation(random_part)
 
     model, motor_strength_dict = translate_genotype_to_phenotype(copy.deepcopy(genotype))
+    print("Fitness After Flip Joint Type Mutation")
     fitness = simulate(model, motor_strength_dict)
 
     # Select a random node and run the freeze edge mutation
@@ -91,6 +84,7 @@ def main():
     flip_freeze_edge_mutation(random_part)
 
     model, motor_strength_dict = translate_genotype_to_phenotype(copy.deepcopy(genotype))
+    print("Fitness After Flip Freeze Edge Mutation")
     fitness = simulate(model, motor_strength_dict)
 
     # Select a random node and remove it
@@ -100,6 +94,7 @@ def main():
     remove_node_mutation(random_part)
 
     model, motor_strength_dict = translate_genotype_to_phenotype(copy.deepcopy(genotype))
+    print("Fitness After Remove Node Mutation")
     fitness = simulate(model, motor_strength_dict)
 
 
